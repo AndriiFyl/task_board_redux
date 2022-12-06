@@ -7,6 +7,18 @@ import { getTasks, getStatusFilter } from '../../redux/selectors';
 import css from './TaskList.module.css';
 import { statusFilters } from '../../redux/constants';
 
+// Через If ... else===================================================================
+
+// const getVisibleTasks = (tasks, statusFilter) => {
+//   if (statusFilter === statusFilters.active) {
+//     return tasks.filter(task => !task.completed);
+//   } else if (statusFilter === statusFilters.completed) {
+//     return tasks.filter(task => task.completed);
+//   }
+//   return tasks;
+// };
+
+// Через SWITCH=======================================================================
 const getVisibleTasks = (tasks, statusFilter) => {
   switch (statusFilter) {
     case statusFilters.active:
@@ -20,6 +32,7 @@ const getVisibleTasks = (tasks, statusFilter) => {
 
 export const TaskList = () => {
   // const tasks = useSelector(state => state.tasks);
+  // tasks and statuslFilter - вся інформація ці стейту про таски та статусфільтер
   const tasks = useSelector(getTasks);
   const statusFilter = useSelector(getStatusFilter);
   const visibleTasks = getVisibleTasks(tasks, statusFilter);
